@@ -1,0 +1,1 @@
+docker exec mongo-sharded-cluster-docker_shard-a_1 mongo --port 27018 /shard-a-init/shard-a-init.js

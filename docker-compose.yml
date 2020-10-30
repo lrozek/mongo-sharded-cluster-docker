@@ -4,3 +4,5 @@ services:
     scale: 3
     image: mongo:4
     command: ["--shardsvr", "--replSet", "rs-shard-a"]
+    volumes:
+     - ./shard-a-init/:/shard-a-init
