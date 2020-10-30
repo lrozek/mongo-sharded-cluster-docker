@@ -5,10 +5,16 @@ services:
     image: mongo:4
     command: ["--shardsvr", "--replSet", "rs-shard-a"]
     volumes:
-     - ./shard-a-init/:/shard-a-init
+     - ./shard-a-init:/shard-a-init
   shard-b:
     scale: 3
     image: mongo:4
     command: ["--shardsvr", "--replSet", "rs-shard-b"]
     volumes:
-     - ./shard-b-init/:/shard-b-init
+     - ./shard-b-init:/shard-b-init
+  config-server:
+    scale: 3
+    image: mongo:4
+    command: ["--configsvr", "--replSet", "rs-conf"]
+    volumes:
+     - ./config-server-init:/config-server-init
