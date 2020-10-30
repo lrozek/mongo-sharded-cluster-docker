@@ -18,3 +18,9 @@ services:
     command: ["--configsvr", "--replSet", "rs-conf"]
     volumes:
      - ./config-server-init:/config-server-init
+  mongos:
+    scale: 2
+    image: mongo:4
+    command: ["mongos", "--configdb", "rs-conf/mongo-sharded-cluster-docker_config-server_1:27019,mongo-sharded-cluster-docker_config-server_2:27019,mongo-sharded-cluster-docker_config-server_3:27019"]
+    depends_on:
+     - config-server
