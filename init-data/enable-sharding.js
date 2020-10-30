@@ -1,3 +1,3 @@
 sh.enableSharding("test")
-sh.shardCollection("test.zips", { city : 1 } )
+sh.shardCollection("test.zips", { _id : "hashed" } )
 
