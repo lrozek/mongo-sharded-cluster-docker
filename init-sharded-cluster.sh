@@ -5,3 +5,9 @@ docker exec mongo-sharded-cluster-docker_shard-b_1 mongo --port 27018 /shard-b-i
 #wait until mongos refreshes its state after config server replica set initialization and starts accepting incoming connections
 sleep 20
 docker exec mongo-sharded-cluster-docker_mongos_1 mongo /router-init/router-init.js
+
+#init sharding
+docker exec mongo-sharded-cluster-docker_mongos_1 mongo /init-data/enable-sharding.js
+
+#load sharded data
+docker exec mongo-sharded-cluster-docker_mongos_1 mongoimport --db test --collection zips /init-data/zips.json
