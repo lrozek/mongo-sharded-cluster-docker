@@ -1,0 +1,6 @@
+version: '2.2'
+services:
+  shard-a:
+    scale: 3
+    image: mongo:4
+    command: ["--shardsvr", "--replSet", "rs-shard-a"]
